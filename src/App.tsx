@@ -15,6 +15,7 @@ import DiscoverScreen from "./components/DiscoverScreen/DiscoverScreen";
 import AppointmentsScreen from "./components/AppointmentsScreen/AppointmentsScreen";
 import UserProfileScreen from "./components/UserProfileScreen/UserProfileScreen";
 import AiMatchScreen from "./components/AiMatchScreen/AiMatchScreen";
+import PersonalInfoScreen from "./components/PersonalInfoScreen/PersonalInfoScreen";
 
 export default function App() {
   const [view, setView] = useState<ViewType>("home");
@@ -57,7 +58,10 @@ export default function App() {
             professionals={PROFESSIONALS}
           />
         )}
-        {view === "user-profile" && <UserProfileScreen />}
+        {view === "user-profile" && <UserProfileScreen onNavigate={navigateTo} />}
+        {view === "personal-info" && (
+          <PersonalInfoScreen onBack={() => navigateTo("user-profile")} />
+        )}
         {view === "ai-match" && (
           <AiMatchScreen
             professionals={PROFESSIONALS}

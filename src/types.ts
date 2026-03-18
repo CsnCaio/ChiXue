@@ -41,4 +41,5 @@ export type ViewType =
   | "ai-match"
   | "profile"
   | "book"
-  | "success";
+  | "success"
+  | "personal-info";
