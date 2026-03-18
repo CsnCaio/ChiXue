@@ -1,6 +1,5 @@
 import { Search, MapPin, Star, ChevronRight, Sparkles } from "lucide-react";
 import { Professional, Therapy } from "../../types";
-import "./HomeScreen.css";
 
 interface HomeScreenProps {
   therapies: Therapy[];

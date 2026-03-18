@@ -1,5 +1,4 @@
 import { Wifi, SignalHigh, Battery } from "lucide-react";
-import "./AndroidStatusBar.css";
 
 const AndroidStatusBar = () => (
   <div className="w-full h-7 bg-white flex justify-between items-center px-4 text-gray-800 text-[11px] font-medium z-50 sticky top-0">

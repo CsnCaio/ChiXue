@@ -1,6 +1,5 @@
 import { CheckCircle2, Clock, MapPin } from "lucide-react";
 import { Professional } from "../../types";
-import "./SuccessScreen.css";
 
 interface SuccessScreenProps {
   professional: Professional;

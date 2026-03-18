@@ -1,6 +1,5 @@
 import { ChevronLeft, Calendar as CalendarIcon } from "lucide-react";
 import { Professional, DateOption } from "../../types";
-import "./BookingScreen.css";
 
 interface BookingScreenProps {
   professional: Professional;

@@ -7,7 +7,6 @@ import {
   HelpCircle,
   LogOut,
 } from "lucide-react";
-import "./UserProfileScreen.css";
 
 const UserProfileScreen = () => (
   <div className="flex-1 overflow-y-auto pb-24 bg-gray-50 [&::-webkit-scrollbar]:hidden">

@@ -1,6 +1,5 @@
 import { Home, Search, Calendar as CalendarIcon, User } from "lucide-react";
 import { ViewType } from "../../types";
-import "./BottomNavigation.css";
 
 interface BottomNavigationProps {
   view: ViewType;

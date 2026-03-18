@@ -1,6 +1,5 @@
 import { Search, MapPin, Star, Filter } from "lucide-react";
 import { Professional } from "../../types";
-import "./DiscoverScreen.css";
 
 interface DiscoverScreenProps {
   professionals: Professional[];

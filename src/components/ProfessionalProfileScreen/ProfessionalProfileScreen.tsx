@@ -1,6 +1,5 @@
 import { ChevronLeft, MapPin, Star } from "lucide-react";
 import { Professional, Therapy } from "../../types";
-import "./ProfessionalProfileScreen.css";
 
 interface ProfessionalProfileScreenProps {
   professional: Professional;

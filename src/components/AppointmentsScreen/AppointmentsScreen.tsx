@@ -1,5 +1,4 @@
 import { Professional, Appointment } from "../../types";
-import "./AppointmentsScreen.css";
 
 interface AppointmentsScreenProps {
   appointments: Appointment[];

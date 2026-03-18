@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import { Professional, Therapy } from "../../types";
 import fetchWithRetry from "../../utils/fetchWithRetry";
-import "./AiMatchScreen.css";
 
 interface AiMatchScreenProps {
   professionals: Professional[];
