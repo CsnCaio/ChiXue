@@ -34,7 +34,7 @@ const AiMatchScreen = ({
     setAiError(null);
     setAiResult(null);
 
-    const apiKey = "";
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY || "";
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
     const prompt = `Você é um assistente de Inteligência Artificial especialista em Medicina Tradicional Chinesa (MTC) para o aplicativo ChiXue.
