@@ -1,0 +1,7 @@
+[
+  { "day": "Seg", "date": "12", "active": false },
+  { "day": "Ter", "date": "13", "active": true },
+  { "day": "Qua", "date": "14", "active": false },
+  { "day": "Qui", "date": "15", "active": false },
+  { "day": "Sex", "date": "16", "active": false }
+]
