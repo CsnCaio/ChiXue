@@ -102,7 +102,7 @@ const BookingScreen = ({
       )}
     </div>
 
-    <div className="fixed bottom-0 left-0 w-full max-w-md mx-auto bg-white border-t border-gray-100 p-4 pb-8">
+    <div className="sticky bottom-0 bg-white border-t border-gray-100 p-4 pb-8">
       <button
         onClick={onConfirm}
         disabled={!selectedTime}
