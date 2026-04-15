@@ -14,7 +14,7 @@ const ProfessionalProfileScreen = ({
   onBack,
   onBook,
 }: ProfessionalProfileScreenProps) => (
-  <div className="flex-1 bg-white overflow-y-auto pb-24 relative [&::-webkit-scrollbar]:hidden">
+  <div className="flex-1 bg-white overflow-y-auto relative [&::-webkit-scrollbar]:hidden">
     <div className="relative h-72">
       <img
         src={professional.image}

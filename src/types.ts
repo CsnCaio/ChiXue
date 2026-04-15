@@ -34,9 +34,15 @@ export interface Appointment {
 }
 
 export type ViewType =
+  | "splash"
+  | "login"
   | "home"
   | "discover"
   | "appointments"
+  | "view-appointment"
+  | "cancellation-done"
+  | "edit-profile"
+  | "profile-saved"
   | "user-profile"
   | "ai-match"
   | "profile"

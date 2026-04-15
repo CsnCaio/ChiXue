@@ -1,6 +1,10 @@
 import { User, Mail, Phone, MapPin, Calendar } from "lucide-react";
 
-const UserProfileScreen = () => (
+interface UserProfileScreenProps {
+  onEditProfile: () => void;
+}
+
+const UserProfileScreen = ({ onEditProfile }: UserProfileScreenProps) => (
   <div className="flex-1 overflow-y-auto pb-24 bg-gray-50 [&::-webkit-scrollbar]:hidden">
     <div className="bg-white px-6 pt-10 pb-6 rounded-b-3xl shadow-sm">
       <h1 className="text-xl font-bold text-gray-900 mb-6 text-center">
@@ -86,7 +90,10 @@ const UserProfileScreen = () => (
         </div>
       </div>
 
-      <button className="w-full bg-teal-600 text-white font-semibold rounded-2xl py-4 shadow-lg shadow-teal-600/20 active:bg-teal-700 transition-colors mt-4">
+      <button
+        onClick={onEditProfile}
+        className="w-full bg-teal-600 text-white font-semibold rounded-2xl py-4 shadow-lg shadow-teal-600/20 active:bg-teal-700 transition-colors mt-4"
+      >
         Editar Informações
       </button>
     </div>

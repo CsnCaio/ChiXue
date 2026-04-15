@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Professional, ViewType } from "./types";
+import { Professional, Appointment, ViewType } from "./types";
 import THERAPIES from "./mocks/therapies";
 import PROFESSIONALS from "./mocks/professionals.json";
 import DATES from "./mocks/dates.json";
@@ -15,15 +15,22 @@ import DiscoverScreen from "./components/DiscoverScreen/DiscoverScreen";
 import AppointmentsScreen from "./components/AppointmentsScreen/AppointmentsScreen";
 import UserProfileScreen from "./components/UserProfileScreen/UserProfileScreen";
 import AiMatchScreen from "./components/AiMatchScreen/AiMatchScreen";
+import SplashScreen from "./components/SplashScreen/SplashScreen";
+import LoginScreen from "./components/LoginScreen/LoginScreen";
+import AppointmentDetailScreen from "./components/AppointmentDetailScreen/AppointmentDetailScreen";
+import CancellationDoneScreen from "./components/CancellationDoneScreen/CancellationDoneScreen";
+import EditProfileScreen from "./components/EditProfileScreen/EditProfileScreen";
+import ProfileSavedScreen from "./components/ProfileSavedScreen/ProfileSavedScreen";
 
 export default function App() {
-  const [view, setView] = useState<ViewType>("home");
+  const [view, setView] = useState<ViewType>("splash");
   const [selectedPro, setSelectedPro] = useState<Professional | null>(null);
   const [selectedTherapy, setSelectedTherapy] = useState<string | null>(null);
 
   // Booking state
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState("13");
+  const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null);
 
   const navigateTo = (newView: string, data: Professional | null = null) => {
     if (data && newView === "profile") setSelectedPro(data);
@@ -36,6 +43,12 @@ export default function App() {
       <div className="w-full h-[100dvh] sm:h-[850px] sm:w-[390px] bg-white sm:rounded-[40px] shadow-2xl overflow-hidden flex flex-col relative sm:border-[8px] border-gray-800">
         <AndroidStatusBar />
 
+        {view === "splash" && (
+          <SplashScreen onFinish={() => setView("login")} />
+        )}
+        {view === "login" && (
+          <LoginScreen onLogin={() => setView("home")} />
+        )}
         {view === "home" && (
           <HomeScreen
             therapies={THERAPIES}
@@ -55,9 +68,46 @@ export default function App() {
           <AppointmentsScreen
             appointments={MOCK_APPOINTMENTS}
             professionals={PROFESSIONALS}
+            onViewAppointment={(apt: Appointment) => {
+              setSelectedAppointment(apt);
+              setView("view-appointment");
+            }}
           />
         )}
-        {view === "user-profile" && <UserProfileScreen />}
+        {view === "view-appointment" && selectedAppointment && (() => {
+          const pro = PROFESSIONALS.find((p) => p.id === selectedAppointment.proId);
+          return pro ? (
+            <AppointmentDetailScreen
+              appointment={selectedAppointment}
+              professional={pro}
+              onBack={() => setView("appointments")}
+              onCancelDone={() => setView("cancellation-done")}
+            />
+          ) : null;
+        })()}
+        {view === "cancellation-done" && selectedAppointment && (() => {
+          const pro = PROFESSIONALS.find((p) => p.id === selectedAppointment.proId);
+          return pro ? (
+            <CancellationDoneScreen
+              professional={pro}
+              appointment={selectedAppointment}
+              onGoHome={() => {
+                setSelectedAppointment(null);
+                setView("home");
+              }}
+            />
+          ) : null;
+        })()}
+        {view === "user-profile" && <UserProfileScreen onEditProfile={() => setView("edit-profile")} />}
+        {view === "edit-profile" && (
+          <EditProfileScreen
+            onBack={() => setView("user-profile")}
+            onSave={() => setView("profile-saved")}
+          />
+        )}
+        {view === "profile-saved" && (
+          <ProfileSavedScreen onGoBack={() => setView("user-profile")} />
+        )}
         {view === "ai-match" && (
           <AiMatchScreen
             professionals={PROFESSIONALS}
